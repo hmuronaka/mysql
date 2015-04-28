@@ -17,6 +17,13 @@ default-character-set          = <%= @config.charset %>
 <% end %>
 
 [mysqld]
+skip-character-set-client-handshake
+<% if @config.charset %>
+  character-set-server = <%= @config.charset %>
+<% end %>
+<% if @config.collation_server %>
+  collation-server = <%= @config.collation_server %>
+<% end %>
 <% if @config.run_user %>
 user                           = <%= @config.run_user %>
 <% end %>
